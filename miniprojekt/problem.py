@@ -1,16 +1,9 @@
-maile = []
-końcówki = {'gmail' : "@gmail.com", 'wp': '@wp.pl' }
+from dodaj import dodaj_maila
 dane = {'imie' : 'Hubert', 'nazwisko' : "Rakowski"}
-def dodaj_maila(imie, nazwisko, koniec):
-    mail = f'{imie}.{nazwisko}{końcówki[koniec]}'
-    maile.append(mail)
-    print(mail)
+maile = []
 
-dodaj_maila(dane['imie'], dane['nazwisko'], 'gmail')
-dodaj_maila('Monika', 'Kowal', 'wp')
-print(maile)
+dodaj_maila(dane['imie'], dane['nazwisko'], 'gmail', maile)
+dodaj_maila('Monika', 'Kowal', 'wp', maile)
 
-with open('maile.txt', "w") as file:
-    for mail in maile:
-        file.write(mail+'\n')
-
+with open('maile.txt', "x") as file:
+    file.writelines(maile)
